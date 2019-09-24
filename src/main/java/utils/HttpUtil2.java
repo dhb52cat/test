@@ -154,7 +154,7 @@ public class HttpUtil2 {
         }
         return null;
     }
-    public static String post(JSONObject json, String URL) {
+    public static String post1(JSONObject json, String URL) {
 
         DefaultHttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(URL);
@@ -281,8 +281,17 @@ public class HttpUtil2 {
     public static String post(String json, String URL) {
         DefaultHttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(URL);
+        
         post.setHeader("Content-Type", "application/json");
-        post.addHeader("Authorization", "Basic YWRtaW46");
+//        post.setHeader("Content-Encoding", "gzip");
+//        post.setHeader("Server", "nginx/1.12.2");
+//        post.setHeader("X-Daa-Tunnel", "hop_count=3");
+//        post.setHeader("X-NWS-LOG-UUID", "17900024804939730471 07102197e13b4c6b15335e94859e887e");
+//        post.setHeader("X-NWS-UUID-VERIFY", "faf0805b60d267b63411867f8a2091c0");
+//        post.setHeader("Vary", "Accept-Encoding");
+//        post.setHeader("Set-Cookie", "JSESSIONID=0C96B1E2FE6D8A6627AB75D6D85E47C6; Path=/new; HttpOnly");
+//        post.setHeader("Set-Cookie", "JSESSIONID=0C96B1E2FE6D8A6627AB75D6D85E47C6; Path=/new; HttpOnly");
+        //post.addHeader("Authorization", "Basic YWRtaW46");
         String result = "";
         try {
             StringEntity s = new StringEntity(json, "utf-8");
@@ -290,6 +299,7 @@ public class HttpUtil2 {
                     "application/json"));
             post.setEntity(s);
             // 发送请求
+            
             HttpResponse httpResponse = client.execute(post);
             // 获取响应输入流
             InputStream inStream = httpResponse.getEntity().getContent();

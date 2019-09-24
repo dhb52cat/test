@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import utils.HttpUtil2;
+import vo.Daily;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping("test")
-//@Api(value="/test1" ,tags = {"测试"},description = "Operations about user")
 @Api(value="/finance/payment/apply", tags={"财务-付款申请管理"})
 public class SwagTest {
 
@@ -39,6 +40,11 @@ public class SwagTest {
             String req=JSON.toJSONString(param);
             String responseContext = HttpUtil2.post(req,url);
             System.out.println(responseContext);
+            Daily daily=JSON.parseObject(responseContext, Daily.class);
+            String[] dailyItems=StringUtils.split(daily.getData().getItems(),',');
+            List<String> list=JSON.parseArray(daily.getData().getItems(),String.class);
+            List<String> list1=JSON.parseArray(list.get(0),String.class);
+            System.out.println(daily);
         }
         return null;
     }
@@ -56,4 +62,28 @@ public class SwagTest {
     public Object chart(){
         return  new ModelAndView("/gram");
     }
+    @RequestMapping("/notice")
+    @ResponseBody
+    public Object notice() {
+        Map param = new HashMap<String, String>();
+
+        param.put("column","szse_main_latest");
+        param.put("pageNum","2");
+        param.put("pageSize","50");
+
+        String url="http://www.cninfo.com.cn/new/disclosure?column=szse_latest&pageNum=1&pageSize=50";
+        if(StringUtils.isNotBlank(url)){
+
+            String responseContext = HttpUtil2.post(JSON.toJSONString(param),url);
+            System.out.println(responseContext);
+            Daily daily=JSON.parseObject(responseContext, Daily.class);
+            String[] dailyItems=StringUtils.split(daily.getData().getItems(),',');
+            List<String> list=JSON.parseArray(daily.getData().getItems(),String.class);
+            List<String> list1=JSON.parseArray(list.get(0),String.class);
+            System.out.println(daily);
+        }
+        return null;
+    }
+
+
 }
