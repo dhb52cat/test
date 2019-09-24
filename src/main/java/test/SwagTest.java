@@ -46,7 +46,7 @@ public class SwagTest {
 
     @ApiOperation(value = "添加用户信息", notes = "添加用户", httpMethod = "GET",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    @RequestMapping("/add")
+    @RequestMapping("/add1")
     @ResponseBody
     public Object add() {
         return "s";
