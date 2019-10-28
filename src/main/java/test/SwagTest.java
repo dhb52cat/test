@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import utils.HttpUtil2;
+import vo.Notice;
 import vo.Daily;
 
 import java.util.HashMap;
@@ -76,12 +77,13 @@ public class SwagTest {
 
             String responseContext = HttpUtil2.post(JSON.toJSONString(param),url);
             System.out.println(responseContext);
-            Daily daily=JSON.parseObject(responseContext, Daily.class);
-            String[] dailyItems=StringUtils.split(daily.getData().getItems(),',');
-            List<String> list=JSON.parseArray(daily.getData().getItems(),String.class);
-            List<String> list1=JSON.parseArray(list.get(0),String.class);
+            Notice daily=JSON.parseObject(responseContext, Notice.class);
+//            String[] dailyItems=StringUtils.split(daily.getData().getItems(),',');
+//            List<String> list=JSON.parseArray(daily.getData().getItems(),String.class);
+//            List<String> list1=JSON.parseArray(list.get(0),String.class);
             System.out.println(daily);
         }
+
         return null;
     }
 
