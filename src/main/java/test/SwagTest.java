@@ -1,9 +1,11 @@
 package test;
 
 import com.alibaba.fastjson.JSON;
+import dao.TestMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ import java.util.Map;
 @RequestMapping("test")
 @Api(value="/finance/payment/apply", tags={"财务-付款申请管理"})
 public class SwagTest {
+    @Autowired
+    private TestMapper testMapper;
 
     @ApiOperation(value = "删除用户信息", notes = "删除用户", httpMethod = "DELETE",
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -83,7 +87,7 @@ public class SwagTest {
 //            List<String> list1=JSON.parseArray(list.get(0),String.class);
             System.out.println(daily);
         }
-
+        System.out.println(testMapper.test());
         return null;
     }
 
