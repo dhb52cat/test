@@ -1,5 +1,9 @@
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用layui</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+
     <meta charset="UTF-8">
     <title>Title2</title>
     <script type="text/javascript" src="$rc.contextPath/resources/dygraph.min.js"></script>
@@ -8,7 +12,18 @@
 </head>
 <body>
 <div id="graphdiv"></div>
-<script type="text/javascript">
+<script src="$rc.contextPath/resources/layui/layui.all.js"></script>
+<!--<script src="../layui/layui.js"></script>-->  <!--客户端访问不到webinfo和resource里的文件-->
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer
+            ,form = layui.form;
+
+        layer.msg('Hello World');
+    });
+</script>
+<!--<script type="text/javascript">
     g = new Dygraph(
         // containing div
         document.getElementById("graphdiv"),
@@ -18,6 +33,6 @@
         "2008-05-08,70\n" +
         "2008-05-09,80\n"
     );
-</script>
+</script>-->
 </body>
 </html>

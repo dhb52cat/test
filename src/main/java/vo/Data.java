@@ -1,6 +1,5 @@
 package vo;
 
-import java.util.List;
 
 public class Data {
     private String fields;
