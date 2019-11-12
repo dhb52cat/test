@@ -42,4 +42,5 @@
         <property name="exposeSpringMacroHelpers" value="true" />
         <property name="exposeRequestAttributes" value="true" />
     </bean>
+    <import resource="classpath:spring-dataSource.xml" />
 </beans>
