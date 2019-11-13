@@ -1,5 +1,5 @@
 package dao;
 
 public interface TestMapper {
-    int test();
+    Integer test();
 }

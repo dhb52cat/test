@@ -15,11 +15,11 @@
 		<setting name="logImpl" value="LOG4J"/>
 	</settings>
 	
-	<plugins>
+	<!--<plugins>
         <plugin interceptor="com.wiwj.cbs.mybatis.plugin.PageInterceptor">
             <property name="dialect" value="oracle" />
             <property name="pageSqlId" value=".*PageList*.*" />
         </plugin> 
-    </plugins>
+    </plugins>-->
 	
 </configuration>
