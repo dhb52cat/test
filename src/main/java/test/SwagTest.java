@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import dao.TestMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import utils.HttpUtil2;
+import vo.ClassifiedAnnouncements;
 import vo.Notice;
 import vo.Daily;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +26,8 @@ import java.util.Map;
 @RequestMapping("test")
 @Api(value="/finance/payment/apply", tags={"财务-付款申请管理"})
 public class SwagTest {
-    @Autowired
-    private TestMapper testMapper;
+    /*@Autowired
+    private TestMapper testMapper;*/
 
     @ApiOperation(value = "删除用户信息", notes = "删除用户", httpMethod = "DELETE",
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -75,19 +78,22 @@ public class SwagTest {
         param.put("column","szse_main_latest");
         param.put("pageNum","2");
         param.put("pageSize","50");
-
-        String url="http://www.cninfo.com.cn/new/disclosure?column=szse_latest&pageNum=1&pageSize=50";
-        if(StringUtils.isNotBlank(url)){
-
-            String responseContext = HttpUtil2.post(JSON.toJSONString(param),url);
-            System.out.println(responseContext);
-            Notice daily=JSON.parseObject(responseContext, Notice.class);
-//            String[] dailyItems=StringUtils.split(daily.getData().getItems(),',');
-//            List<String> list=JSON.parseArray(daily.getData().getItems(),String.class);
-//            List<String> list1=JSON.parseArray(list.get(0),String.class);
-            System.out.println(daily);
+        int page=1;
+        boolean hasMore=true;
+        String url="http://www.cninfo.com.cn/new/disclosure?column=szse_latest&pageSize=50&pageNum=";
+        List <ClassifiedAnnouncements> insertList =new ArrayList<>();
+        while(hasMore){
+            String responseContext = HttpUtil2.post(JSON.toJSONString(param),url+page);
+            Notice notice=JSON.parseObject(responseContext, Notice.class);
+            hasMore=notice.getHasMore();
+            List<List<ClassifiedAnnouncements>> classifiedAnnouncementsList=notice.getClassifiedAnnouncements();
+            for(List<ClassifiedAnnouncements> list:classifiedAnnouncementsList){
+                insertList.addAll(list);
+            }
+            System.out.println(notice);
+            page++;
         }
-        System.out.println(testMapper.test());
+        //System.out.println(testMapper.test());
         return null;
     }
 
