@@ -7,16 +7,16 @@
         ,adjunctUrl,announcementType,important,announcementTypeName)
       VALUES
         <foreach collection="insertList" separator="," item="item">
-            (item.announcementId,
-            item.secCode,
-            item.secName,
-            item.orgId,
-            item.announcementTitle,
-            item.announcementTime,
-            item.adjunctUrl,
-            item.announcementType,
-            item.important,
-            item.announcementTypeName)
+            ({item.announcementId},
+            {item.secCode},
+            {item.secName},
+            {item.orgId},
+            {item.announcementTitle},
+            {item.announcementTime},
+            {item.adjunctUrl},
+            {item.announcementType},
+            {item.important},
+            {item.announcementTypeName})
         </foreach>
     </insert>
 </mapper>
