@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.ClassifiedAnnouncementMapper">
-    <select id="test" resultType="java.lang.Integer">
-        SELECT COUNT(1) FROM TEST
-    </select>
     <insert id="insertAnnouncement">
-
+      insert into announcement (
+        announcementId,secCode,secName,orgId,announcementTitle,announcementTime
+        ,adjunctUrl,announcementType,important,announcementTypeName)
+      VALUES
+        <foreach collection="insertList" separator="," item="item">
+            (item.announcementId,
+            item.secCode,
+            item.secName,
+            item.orgId,
+            item.announcementTitle,
+            item.announcementTime,
+            item.adjunctUrl,
+            item.announcementType,
+            item.important,
+            item.announcementTypeName)
+        </foreach>
     </insert>
 </mapper>

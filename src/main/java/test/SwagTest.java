@@ -1,6 +1,7 @@
 package test;
 
 import com.alibaba.fastjson.JSON;
+import dao.ClassifiedAnnouncementMapper;
 import dao.TestMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,8 +27,8 @@ import java.util.Map;
 @RequestMapping("test")
 @Api(value="/finance/payment/apply", tags={"财务-付款申请管理"})
 public class SwagTest {
-    /*@Autowired
-    private TestMapper testMapper;*/
+    @Autowired
+    private ClassifiedAnnouncementMapper classifiedAnnouncementMapper;
 
     @ApiOperation(value = "删除用户信息", notes = "删除用户", httpMethod = "DELETE",
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -93,7 +94,9 @@ public class SwagTest {
             System.out.println(notice);
             page++;
         }
-        //System.out.println(testMapper.test());
+
+        classifiedAnnouncementMapper.insertAnnouncement(insertList);
+
         return null;
     }
 
