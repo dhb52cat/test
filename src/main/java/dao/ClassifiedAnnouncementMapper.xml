@@ -2,21 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.ClassifiedAnnouncementMapper">
     <insert id="insertAnnouncement">
-      insert into announcement (
+        insert ignore into announcement (
         announcementId,secCode,secName,orgId,announcementTitle,announcementTime
-        ,adjunctUrl,announcementType,important,announcementTypeName)
-      VALUES
-        <foreach collection="insertList" separator="," item="item">
-            ({item.announcementId},
-            {item.secCode},
-            {item.secName},
-            {item.orgId},
-            {item.announcementTitle},
-            {item.announcementTime},
-            {item.adjunctUrl},
-            {item.announcementType},
-            {item.important},
-            {item.announcementTypeName})
+        ,adjunctUrl,announcementType,
+        important,
+        announcementTypeName)
+        VALUES
+        <foreach collection="list" separator="," item="item">
+            (#{item.announcementId,},
+            #{item.secCode},
+            #{item.secName},
+            #{item.orgId},
+            #{item.announcementTitle},
+            #{item.announcementTime},
+            #{item.adjunctUrl},
+            #{item.announcementType},
+            #{item.important},
+            #{item.announcementTypeName})
         </foreach>
     </insert>
 </mapper>

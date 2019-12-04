@@ -27,8 +27,12 @@ import java.util.Map;
 @RequestMapping("test")
 @Api(value="/finance/payment/apply", tags={"财务-付款申请管理"})
 public class SwagTest {
+
+    @Autowired
+    private TestMapper testMapper;
     @Autowired
     private ClassifiedAnnouncementMapper classifiedAnnouncementMapper;
+
 
     @ApiOperation(value = "删除用户信息", notes = "删除用户", httpMethod = "DELETE",
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -96,7 +100,7 @@ public class SwagTest {
         }
 
         classifiedAnnouncementMapper.insertAnnouncement(insertList);
-
+//        System.out.println(testMapper.test());
         return null;
     }
 
