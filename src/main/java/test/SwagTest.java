@@ -1,11 +1,11 @@
 package test;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.Page;
 import dao.ClassifiedAnnouncementMapper;
 import dao.TestMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import utils.HttpUtil2;
+import vo.AnnouncePageParam;
 import vo.ClassifiedAnnouncements;
 import vo.Notice;
 import vo.Daily;
@@ -100,9 +101,13 @@ public class SwagTest {
         }
 
         classifiedAnnouncementMapper.insertAnnouncement(insertList);
-//        System.out.println(testMapper.test());
         return null;
     }
-
+    @ResponseBody
+    @RequestMapping("/noticeList")
+    public Object getNoticeList(AnnouncePageParam param){
+        Page page=classifiedAnnouncementMapper.selectAnnouncePage(param);
+        return null;
+    }
 
 }
