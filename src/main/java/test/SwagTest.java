@@ -19,10 +19,7 @@ import vo.ClassifiedAnnouncements;
 import vo.Notice;
 import vo.Daily;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("test")
@@ -99,7 +96,9 @@ public class SwagTest {
             System.out.println(notice);
             page++;
         }
-
+        for(ClassifiedAnnouncements s:insertList){
+             s.setRealTime(new Date(s.getAnnouncementTime()));
+        }
         classifiedAnnouncementMapper.insertAnnouncement(insertList);
         return null;
     }

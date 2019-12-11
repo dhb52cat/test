@@ -1,5 +1,6 @@
 package vo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,6 +41,20 @@ public class ClassifiedAnnouncements {
     private String announcementContent;
     private String orgName;
     private String announcementTypeName;
+    private Date realTime;
+
+    public boolean isImportant() {
+        return important;
+    }
+
+    public Date getRealTime() {
+        return realTime;
+    }
+
+    public void setRealTime(Date realTime) {
+        this.realTime = realTime;
+    }
+
     public void setId(String id) {
         this.id = id;
     }

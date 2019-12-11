@@ -9,12 +9,12 @@
         announcementTypeName)
         VALUES
         <foreach collection="list" separator="," item="item">
-            (#{item.announcementId,},
+            (#{item.announcementId},
             #{item.secCode},
             #{item.secName},
             #{item.orgId},
             #{item.announcementTitle},
-            #{item.announcementTime},
+            #{item.realTime},
             #{item.adjunctUrl},
             #{item.announcementType},
             #{item.important},
