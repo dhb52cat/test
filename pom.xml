@@ -22,7 +22,7 @@
     <velocity.version>1.7</velocity.version>
     <velocity-tools.version>2.0</velocity-tools.version>
     <commons-httpclient.version>3.1</commons-httpclient.version>
-    <httpclient.version>4.5</httpclient.version>
+    <httpclient.version>4.5.13</httpclient.version>
     <fastjson.version>1.2.7</fastjson.version>
     <druid.version>1.0.17</druid.version>
     <mybatis.version>3.2.8</mybatis.version>
