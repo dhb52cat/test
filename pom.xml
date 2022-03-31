@@ -18,7 +18,7 @@
     <commons-lang3.version>3.1</commons-lang3.version>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <springframework.version>4.1.2.RELEASE</springframework.version>
+    <springframework.version>5.3.18</springframework.version>
     <velocity.version>1.7</velocity.version>
     <velocity-tools.version>2.0</velocity-tools.version>
     <commons-httpclient.version>3.1</commons-httpclient.version>
