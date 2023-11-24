@@ -21,4 +21,55 @@
             #{item.announcementTypeName})
         </foreach>
     </insert>
+    <select id="selectAnnouncePage" resultType="vo.ClassifiedAnnouncements">
+      select announcementId,secCode,secName,orgId,announcementTitle,announcementTime as realTime
+        ,adjunctUrl,announcementType,
+        important,
+        announcementTypeName from announcement
+        <where>
+            <if test="important!=null">
+                AND importent=#{importent,jdbcType=DECIMAL}
+            </if>
+            <if test="secCode!=null">
+                AND secCode=#{secCode，jdbcType=DECIMAL}
+            </if>
+            <if test="typeName!=null">
+                and typeName=#{typeName,jdbcType=VARCHAR}
+            </if>
+            <if test="startDate!=null">
+              <![CDATA[
+                AND announcementTime>#{startDate,jdbcType=DATE}
+              ]]>
+            </if>
+            <if test="endDate!=null">
+              <![CDATA[
+              AND announcementTime<#{endDate,jdbcType=DATE}
+            ]]>
+            </if>
+        </where>
+    </select>
+
+    <delete id="truncateTempAnnounce">
+        TRUNCATE table announcement_temp
+    </delete>
+    <insert id="insertTempAnnouncement">
+        insert  into announcement_temp (
+        announcementId,secCode,secName,orgId,announcementTitle,announcementTime
+        ,adjunctUrl,announcementType,
+        important,
+        announcementTypeName)
+        VALUES
+        <foreach collection="list" separator="," item="item">
+            (#{item.announcementId},
+            #{item.secCode},
+            #{item.secName},
+            #{item.orgId},
+            #{item.announcementTitle},
+            #{item.realTime},
+            #{item.adjunctUrl},
+            #{item.announcementType},
+            #{item.important},
+            #{item.announcementTypeName})
+        </foreach>
+    </insert>
 </mapper>

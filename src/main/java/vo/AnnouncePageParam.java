@@ -8,9 +8,9 @@ public class AnnouncePageParam implements Serializable {
     private int pageSize=10;
     private Date startDate;
     private Date endDate;
-    private int important;
-    private int secCode;
-    private int type;
+    private Integer important;
+    private Integer secCode;
+    private Integer type;
     private String typeName;
 
     public int getPageNum() {
@@ -45,27 +45,27 @@ public class AnnouncePageParam implements Serializable {
         this.endDate = endDate;
     }
 
-    public int getImportant() {
+    public Integer getImportant() {
         return important;
     }
 
-    public void setImportant(int important) {
+    public void setImportant(Integer important) {
         this.important = important;
     }
 
-    public int getSecCode() {
+    public Integer getSecCode() {
         return secCode;
     }
 
-    public void setSecCode(int secCode) {
+    public void setSecCode(Integer secCode) {
         this.secCode = secCode;
     }
 
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 

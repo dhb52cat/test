@@ -283,15 +283,7 @@ public class HttpUtil2 {
         HttpPost post = new HttpPost(URL);
         
         post.setHeader("Content-Type", "application/json");
-//        post.setHeader("Content-Encoding", "gzip");
-//        post.setHeader("Server", "nginx/1.12.2");
-//        post.setHeader("X-Daa-Tunnel", "hop_count=3");
-//        post.setHeader("X-NWS-LOG-UUID", "17900024804939730471 07102197e13b4c6b15335e94859e887e");
-//        post.setHeader("X-NWS-UUID-VERIFY", "faf0805b60d267b63411867f8a2091c0");
-//        post.setHeader("Vary", "Accept-Encoding");
-//        post.setHeader("Set-Cookie", "JSESSIONID=0C96B1E2FE6D8A6627AB75D6D85E47C6; Path=/new; HttpOnly");
-//        post.setHeader("Set-Cookie", "JSESSIONID=0C96B1E2FE6D8A6627AB75D6D85E47C6; Path=/new; HttpOnly");
-        //post.addHeader("Authorization", "Basic YWRtaW46");
+
         String result = "";
         try {
             StringEntity s = new StringEntity(json, "utf-8");

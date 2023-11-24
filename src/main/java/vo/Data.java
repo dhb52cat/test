@@ -1,23 +1,22 @@
 package vo;
 
 
-public class Data {
-    private String fields;
-    private String items;
+import java.util.List;
 
-    public String getFields() {
+public   class Data {
+    private List<String> fields;
+    private List<List<String>> items;
+    public void setFields(List<String> fields) {
+        this.fields = fields;
+    }
+    public List<String> getFields() {
         return fields;
     }
 
-    public void setFields(String fields) {
-        this.fields = fields;
-    }
-
-    public String getItems() {
-        return items;
-    }
-
-    public void setItems(String items) {
+    public void setItems(List<List<String>> items) {
         this.items = items;
+    }
+    public List<List<String>> getItems() {
+        return items;
     }
 }

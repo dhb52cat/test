@@ -43,9 +43,7 @@ public class ClassifiedAnnouncements {
     private String announcementTypeName;
     private Date realTime;
 
-    public boolean isImportant() {
-        return important;
-    }
+
 
     public Date getRealTime() {
         return realTime;
