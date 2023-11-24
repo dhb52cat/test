@@ -3,11 +3,11 @@ package test;
 
 
 
-import cn.hittec.risk.common.util.ExceptionUtil;
+//import cn.hittec.risk.common.util.ExceptionUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
-import org.apache.commons.compress.utils.IOUtils;
+//import org.apache.commons.compress.utils.IOUtils;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.URI;
@@ -72,7 +72,8 @@ public class InterfaceTest {
                 }
             }
 
-            byte[] data = IOUtils.toByteArray(inputStream);
+//     TODO       byte[] data = IOUtils.toByteArray(inputStream);
+            byte[] data = null;
             httpURLConnection.getOutputStream().write(data, 0, data.length);
             httpURLConnection.getOutputStream().flush();
             httpURLConnection.getOutputStream().close();
