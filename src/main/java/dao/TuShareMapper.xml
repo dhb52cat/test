@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.TuShareMapper">
+    <insert id="insert"  statementType="STATEMENT">
+        insert ignore into  ${api} (${fields}) values
+        <foreach collection="data.items" item="item" separator="," >
+            <foreach collection="item" item="colunm" open="(" close=")"  separator=",">'${colunm}'</foreach>
+        </foreach>
+    </insert>
+
+</mapper>
